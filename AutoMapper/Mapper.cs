@@ -22,18 +22,18 @@ namespace AutoMapper
             string[] ignoredProperties = null
             ) where T : new()
         {
-            List<PropertyInfo> propList;           
+            List<PropertyInfo> propSourseList;           
             if (ignoredProperties == null)
             {
-                propList = toMapping.GetType().GetProperties().ToList(); 
+                propSourseList = toMapping.GetType().GetProperties().ToList(); 
             }
             else
             {                               
-                propList = toMapping.GetType().GetProperties().Where(
+                propSourseList = toMapping.GetType().GetProperties().Where(
                     propertyInfo => !ignoredProperties.Contains(propertyInfo.Name)
                     ).ToList();                
             }
-            if (propList.Count == 0)
+            if (propSourseList.Count == 0)
             {
                 return destObject;
             }
@@ -41,23 +41,22 @@ namespace AutoMapper
             {
                 destObject = new T();
             }
-            var propListResult = destObject.GetType().GetProperties().ToList();           
-            foreach (var prop in propList)
+            var propDestlist = destObject.GetType().GetProperties().ToList();           
+            foreach (var propSourse in propSourseList)
             {
                 try
                 {
-                    if(!prop.PropertyType.IsPrimitive)
+                    if (!propSourse.PropertyType.IsPrimitive && propSourse.PropertyType != typeof (string))
                     {
-                        var instance = Activator.CreateInstance(prop.PropertyType);
-                        instance = prop.GetValue(toMapping);
+                        var instance = propSourse.GetValue(toMapping);
                         destObject = Mapping(instance, destObject, ignoredProperties);
-                    }
+                    }                    
                 }
                 catch (Exception)
-                {                   
+                {
                 }
-                var prop1 = prop;
-                foreach (var propertyInfo in propListResult.Where(
+                var prop1 = propSourse;
+                foreach (var propResult in propDestlist.Where(
                     propertyInfo => (
                         string.Equals(
                             prop1.Name,
@@ -69,9 +68,9 @@ namespace AutoMapper
                     )
                     )
                 {
-                    destObject.GetType().GetProperty(propertyInfo.Name).SetValue(
+                    destObject.GetType().GetProperty(propResult.Name).SetValue(
                         destObject,
-                        prop.GetValue(toMapping)
+                        propSourse.GetValue(toMapping)
                         );
                 }
             }

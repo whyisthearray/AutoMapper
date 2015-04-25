@@ -225,19 +225,31 @@ namespace MapperTests
         }
               
         [Test]
-        public void Test2()
+        public void Mapping_AnonymousClassCase_CorrectWork_Test()
         {
-
-            var pHouse = new House("Trakt Hlynyanskuy", 153);
-            var pAdress = new Adress("Ukraine", "Lviv", pHouse);
-            var toMapping = new NewPerson("Alex", "Albul", pAdress);           
+            var toMapping = new
+            {
+                Name = "Alex",
+                Surname = "Albul",
+                Adress = new
+                {
+                    Country = "Ukraine",
+                    City = "Lviv",
+                    House = new
+                    {
+                        Street = "Zelena",
+                        Number = 1
+                    }
+                }
+            };
+                                  
             var expected = new NewPerson2(
                 "Alex",
                 "Albul",
                 "Ukraine",
                 "Lviv",
-                "Trakt Hlynyanskuy",
-                153
+                "Zelena",
+                1
                 );
             var actual = Mapper.Mapping<NewPerson2>(toMapping);           
             Assert.IsTrue(

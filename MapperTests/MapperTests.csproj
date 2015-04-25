@@ -43,8 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NewPerson.cs" />
-    <Compile Include="Number.cs" />
-    <Compile Include="Person.cs" />
     <Compile Include="tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
