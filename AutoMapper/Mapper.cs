@@ -2,16 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Serialization;
 
 namespace AutoMapper
 {
     
     public static class Mapper
     {
+        /// <summary>
+        /// Execute a mapping from the source object to a new or existed destination object with supplied mapping options.
+        /// </summary>
+        /// <typeparam name="T">Type of the destination object</typeparam>
+        /// <param name="toMapping">Sourse object</param>
+        /// <param name="destObject">Destination object.If not existed, it willbe create new instance</param>
+        /// <param name="ignoredProperties">Array of ignored properties, if need</param>
+        /// <returns>Object with mapping properties</returns>
         public static T Mapping<T>(
             object toMapping, 
-            T result = default(T),
+            T destObject = default(T),
             string[] ignoredProperties = null
             ) where T : new()
         {
@@ -28,13 +35,13 @@ namespace AutoMapper
             }
             if (propList.Count == 0)
             {
-                return result;
+                return destObject;
             }
-            if (result == null)
+            if (destObject == null)
             {
-                result = new T();
+                destObject = new T();
             }
-            var propListResult = result.GetType().GetProperties().ToList();           
+            var propListResult = destObject.GetType().GetProperties().ToList();           
             foreach (var prop in propList)
             {
                 try
@@ -43,7 +50,7 @@ namespace AutoMapper
                     {
                         var instance = Activator.CreateInstance(prop.PropertyType);
                         instance = prop.GetValue(toMapping);
-                        result = Mapping(instance, result, ignoredProperties);
+                        destObject = Mapping(instance, destObject, ignoredProperties);
                     }
                 }
                 catch (Exception)
@@ -62,13 +69,13 @@ namespace AutoMapper
                     )
                     )
                 {
-                    result.GetType().GetProperty(propertyInfo.Name).SetValue(
-                        result,
+                    destObject.GetType().GetProperty(propertyInfo.Name).SetValue(
+                        destObject,
                         prop.GetValue(toMapping)
                         );
                 }
             }
-            return result;
+            return destObject;
         }       
     }
 }
