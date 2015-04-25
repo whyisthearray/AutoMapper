@@ -50,6 +50,7 @@ namespace AutoMapper
                     {
                         var instance = propSourse.GetValue(toMapping);
                         destObject = Mapping(instance, destObject, ignoredProperties);
+                        continue;
                     }                    
                 }
                 catch (Exception)
