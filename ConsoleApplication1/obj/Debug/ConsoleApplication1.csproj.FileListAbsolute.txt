@@ -1,0 +1,8 @@
+D:\VS2012\AutoMapper\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\VS2012\AutoMapper\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\VS2012\AutoMapper\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\VS2012\AutoMapper\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+D:\VS2012\AutoMapper\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\VS2012\AutoMapper\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\VS2012\AutoMapper\ConsoleApplication1\bin\Debug\AutoMapper.dll
+D:\VS2012\AutoMapper\ConsoleApplication1\bin\Debug\AutoMapper.pdb

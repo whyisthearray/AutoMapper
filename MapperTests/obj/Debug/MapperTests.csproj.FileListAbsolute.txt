@@ -1,0 +1,9 @@
+D:\VS2012\AutoMapper\MapperTests\bin\Debug\MapperTests.dll
+D:\VS2012\AutoMapper\MapperTests\bin\Debug\MapperTests.pdb
+D:\VS2012\AutoMapper\MapperTests\bin\Debug\nunit.framework.dll
+D:\VS2012\AutoMapper\MapperTests\bin\Debug\nunit.framework.xml
+D:\VS2012\AutoMapper\MapperTests\obj\Debug\MapperTests.csprojResolveAssemblyReference.cache
+D:\VS2012\AutoMapper\MapperTests\obj\Debug\MapperTests.dll
+D:\VS2012\AutoMapper\MapperTests\obj\Debug\MapperTests.pdb
+D:\VS2012\AutoMapper\MapperTests\bin\Debug\AutoMapper.dll
+D:\VS2012\AutoMapper\MapperTests\bin\Debug\AutoMapper.pdb

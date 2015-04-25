@@ -1,0 +1,5 @@
+D:\VS2012\AutoMapper\AutoMapper\bin\Debug\AutoMapper.dll
+D:\VS2012\AutoMapper\AutoMapper\bin\Debug\AutoMapper.pdb
+D:\VS2012\AutoMapper\AutoMapper\obj\Debug\AutoMapper.dll
+D:\VS2012\AutoMapper\AutoMapper\obj\Debug\AutoMapper.pdb
+D:\VS2012\AutoMapper\AutoMapper\obj\Debug\AutoMapper.csprojResolveAssemblyReference.cache
