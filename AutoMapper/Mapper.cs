@@ -6,25 +6,7 @@ using System.Runtime.Serialization;
 
 namespace AutoMapper
 {
-
-    public class Test1
-    {
-        public int One { get; set; }
-        public int Two { get; set; }
-
-        public Test1(int one, int two)
-        {
-            One = one;
-            Two = two;
-        }
-    }
-
-    public class Test2
-    {
-        public int One { get; set; }
-        public int Two { get; set; }
-    }
-
+    
     public static class Mapper
     {
         public static T Mapping<T>(
