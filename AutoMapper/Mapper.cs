@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -13,7 +12,7 @@ namespace AutoMapper
         /// </summary>
         /// <typeparam name="T">Type of the destination object</typeparam>
         /// <param name="toMapping">Sourse object</param>
-        /// <param name="destObject">Destination object.If not existed, it willbe create new instance</param>
+        /// <param name="destObject">Destination object. If not existed, it willbe create new instance</param>
         /// <param name="ignoredProperties">Array of ignored properties, if need</param>
         /// <returns>Object with mapping properties</returns>
         public static T Mapping<T>(
@@ -22,18 +21,18 @@ namespace AutoMapper
             string[] ignoredProperties = null
             ) where T : new()
         {
-            List<PropertyInfo> propSourseList;           
+            PropertyInfo[] propertyInfos;
             if (ignoredProperties == null)
             {
-                propSourseList = toMapping.GetType().GetProperties().ToList(); 
+                propertyInfos = toMapping.GetType().GetProperties();
             }
             else
             {                               
-                propSourseList = toMapping.GetType().GetProperties().Where(
+                propertyInfos = toMapping.GetType().GetProperties().Where(
                     propertyInfo => !ignoredProperties.Contains(propertyInfo.Name)
-                    ).ToList();                
+                    ).ToArray();
             }
-            if (propSourseList.Count == 0)
+            if (propertyInfos.Length == 0)
             {
                 return destObject;
             }
@@ -41,8 +40,8 @@ namespace AutoMapper
             {
                 destObject = new T();
             }
-            var propDestlist = destObject.GetType().GetProperties().ToList();           
-            foreach (var propSourse in propSourseList)
+            var propDestlist = destObject.GetType().GetProperties();           
+            foreach (var propSourse in propertyInfos)
             {
                 try
                 {
@@ -50,6 +49,7 @@ namespace AutoMapper
                     {
                         var instance = propSourse.GetValue(toMapping);
                         destObject = Mapping(instance, destObject, ignoredProperties);
+                        continue;
                     }                    
                 }
                 catch (Exception)
